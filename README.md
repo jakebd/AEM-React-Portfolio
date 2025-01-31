@@ -2,13 +2,13 @@
 
 This project demonstrates a headless implementation of **Adobe Experience Manager (AEM) 6.5+** using **React** in a local environment. The goal is to retrieve structured content from AEM via GraphQL API calls and display it in a modern React-based frontend in a relatively simple way.  
 
-The project follows **Most** best practices from the **Adobe WKND tutorial** and additional resources. This example is a relatively basic one, but tries to incorporate the learnings from the above mentioned tutorial.  
+The project follows **Most** of the best practices from the **Adobe WKND tutorial** and additional resources. This example is a relatively basic one, but tries to incorporate the learnings from the above mentioned tutorial.  
 
-This project assumes you have a local instance of AEM 6.5+ running, and have a basic understanding of how to build Content Fragment Models, GraphQL quiries and how to expose them, and authentication in AEM. 
+This project assumes you have a local instance of AEM 6.5+ running, and have a basic understanding of how to build Content Fragment Models, GraphQL queries and how to expose them, and authentication in AEM. 
 
 ## 🛠️ Tech Stack  
 
-- **AEM 6.5+ Local Instance** 
+- **AEM 6.5+** (Local Instance)
 - **React** (Frontend framework)  
 - **Vite** (Fast development environment)  
 - **Axios** (For API requests)  
@@ -59,9 +59,19 @@ yarn storybook
 
 yarn dev
 
-### 🛠️ GraphQL Queries Used
+### 🛠️ Content Fragment Models
+The content Fragment Model used is a custom model called "Article Model". 
+
+#### Data types:
+  - Article Title: Single Line Text
+  - Featured Image: Content Reference
+  - Article Body: Multifield
+  - Publish Date: Date and Time
+
+### 📡 GraphQL Queries Used
 Below is an example of the GraphQL query used to fetch all articles from AEM:
 
+## All Articles
 ```graphql
 query allArticles {
   articleModelList {
@@ -82,7 +92,226 @@ query allArticles {
     }
   }
 }
+```
 
+## All Tags
+```graphql
+query allArticles{
+  articleModelList{
+    items{
+      _path,
+      _tags,
+      articleTitle,
+      featuredImage {
+        ... on ImageRef{
+          _path,
+          _authorUrl
+        }
+      }
+      articleIntro {
+        html
+        plaintext
+      }
+    }
+  }
+}
+```
+
+## Filter Articles By Tag
+```graphql
+query FilterArticlesByTag($tag: String!) {
+  articleModelList(
+    filter: {_tags: {_expressions: [{value: $tag}]} }
+  ) {
+    items {
+      _path
+      _tags
+      articleTitle
+      
+      _metadata{
+        calendarMetadata{
+          __typename,
+          name,
+          value,
+        }
+      }
+      featuredImage {
+        ... on ImageRef {
+          _path
+          _authorUrl
+        }
+      }
+      articleIntro {
+        html
+        plaintext
+      }
+    }
+  }
+}
+```
+
+## Filter Articles By The First Tag
+```graphql
+query FilterArticlesByTag($tag: String!) {
+  articleModelList(
+    filter: {_tags: {_expressions: [{value: $tag}]} },
+    sort: "publishedDate DESC"
+    limit: 1
+  ) {
+    items {
+      _path
+      _tags
+      articleTitle
+      
+      _metadata{
+        calendarMetadata{
+          __typename,
+          name,
+          value,
+        }
+      }
+      featuredImage {
+        ... on ImageRef {
+          _path
+          _authorUrl
+        }
+      }
+      articleIntro {
+        html
+        plaintext
+      }
+    }
+  }
+}
+```
+
+## Article By Path
+```graphql
+query ArticleByPath($path: String!) {
+  articleModelByPath(
+ 		_path: $path
+  ) {
+    item {
+      _path
+      _tags
+      articleTitle
+      
+      _metadata{
+        calendarMetadata{
+          __typename,
+          name,
+          value,
+        }
+      }
+      featuredImage {
+        ... on ImageRef {
+          _path
+          _authorUrl
+        }
+      }
+      articleIntro {
+        html
+        plaintext
+      }
+    }
+  }
+}
+```
+
+## Dynamic Articles - Not Needed
+```graphql
+query allArticles{
+  dynamicArticleModelList{
+    items{
+      _path,
+      _tags,
+      articleTitle{
+        title
+      }
+      featuredImage{
+        ...on ImageRef{
+          _path
+          _authorUrl
+        }
+        __typename
+      }
+      articlecontent{
+        ... on ImageModel{
+          _path,
+          image{
+            __typename
+          }
+        }
+        ... on TitleModel{
+          _path,
+          title
+        }
+        ... on ParagraphModel{
+          _path,
+          paragraph{
+            plaintext
+          }
+        }
+        __typename,
+      }
+    }
+  }
+}
+```
+
+## Dynamic Articles by path - Not Needed
+```graphql
+query DynamicArticleByPath($path: String!) {
+  dynamicArticleModelByPath(
+ 		_path: $path
+  ) {
+    item {
+      _path
+      _tags
+      articleTitle{
+        title
+      }
+      
+      _metadata{
+        calendarMetadata{
+          __typename,
+          name,
+          value,
+        }
+      }
+      featuredImage {
+        ... on ImageRef {
+          _path
+          _authorUrl
+        }
+      }
+      articlecontent{
+				
+        ... on ImageModel{
+          _path,
+          image{
+            __typename
+            ... on ImageRef{
+            _authorUrl
+        }
+          }
+        }
+        ... on TitleModel{
+          _path,
+          title
+        }
+        ... on ParagraphModel{
+          _path,
+          paragraph{
+            plaintext
+          }
+        }
+        __typename,
+      }
+    }
+  }
+}
+```
 
 # React + TypeScript + Vite
 
