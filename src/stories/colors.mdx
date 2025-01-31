@@ -1,0 +1,76 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Colors" />
+## Primary, Secondary and Accent Colors
+
+Primary and secondary brand colors are used for accents, icons, and non-text elements.
+
+<ColorPalette>
+  <ColorItem
+    title="Main Background Color"
+    subtitle="Deep Purple"
+    colors={{ deepPurple: '#14111c' }}
+  />
+  <ColorItem 
+    title="Main Nav Color" 
+    subtitle="Medium Purple" 
+    colors={{ MediumPurple: '#221d2f' }} 
+  />
+  <ColorItem 
+    title="Nav Hover Color" 
+    subtitle="Light Purple" 
+    colors={{ LightPurple: '#3a3154' }} 
+  />
+  <ColorItem 
+    title="Accent purple Color" 
+    subtitle="Vibrant Purple" 
+    colors={{ vibPurple: '#6f42c1' }} 
+  />
+  </ColorPalette>
+
+## Variations of the Primary colors and call to action color
+
+Main intention with these is to create constrast between the Primary and secondary colors. 
+  <ColorPalette>
+  <ColorItem 
+    title="Post Card Color" 
+    subtitle="Deepish Purple" 
+    colors={{ DeepishPurple: '#18151f' }} 
+  />
+  <ColorItem 
+    title="Call To Action" 
+    subtitle="Bumble Bee Yellow" 
+    colors={{ BBYellow: '#fad07e' }} 
+  />
+
+  <ColorItem
+    title="Null Colors"
+    subtitle="Greys"
+    colors={{
+      Grey: 'rgba(83, 83, 83);',
+      Grey80: 'rgba(83, 83, 83, 0.8)',
+      Grey40: 'rgba(83, 83, 83, 0.4);',
+    }}
+  />
+</ColorPalette>
+
+## Text Colors
+
+Main text colors used on the site. 
+<ColorPalette>
+  <ColorItem
+    title="Main Text Color"
+    subtitle="White"
+    colors={{ White: '#fff' }} 
+  />
+  <ColorItem 
+    title="Secondary Text Color" 
+    subtitle="Medium Grey" 
+    colors={{ MedGrey: 'rgb(167, 167, 167)' }} 
+  />
+  <ColorItem 
+    title="tertiary Text Color" 
+    subtitle="Black" 
+    colors={{ Black: '#000000' }} 
+  />
+</ColorPalette>

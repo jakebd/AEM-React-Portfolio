@@ -1,0 +1,58 @@
+.grow{
+    transition: transform 0.2s;
+    height: 75px;
+    display: inline-block;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+    color: var(--main-acc-color);
+}
+
+.brand-primary-text-color{
+    color: var(--primary-text-color);
+}
+
+.brand-secondary-text-color{
+    color: var(--tertiary-text-color);
+}
+
+.subjectLink{
+    text-decoration: none;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--primary-text-color) !important;
+}
+.grow a:hover{
+    color:var(--main-acc-color);
+}
+
+.catcard__bar {
+    width: 0;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--main-acc-color);
+    transition: width 0.2s ease;
+  }
+  
+.grow:hover .catcard__bar {
+    width: 100%;
+}
+
+.sectionHeader{
+    margin: 2rem 0;
+    font-weight: 500;
+}
+
+.link-wrapper {
+    display: inline-block; /* Makes the container fit the link's width */
+}
+
+.toUpperCase{
+    text-transform: uppercase;
+}
+
+.toCenterText{
+    text-align: center;
+    width: 100%;
+}

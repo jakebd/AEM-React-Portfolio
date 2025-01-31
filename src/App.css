@@ -1,0 +1,43 @@
+@import url('./Colors.css');
+/* App Layout Styling */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Navigation Styling */
+nav {
+  display: block;
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  z-index: 9999;
+  background: var(--main-nav-color);
+  font-family: Hack, monospace;
+  margin-top: 0; 
+}
+
+nav a {
+  color: var(--primary-text-color);
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 900px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 3rem;
+}
+

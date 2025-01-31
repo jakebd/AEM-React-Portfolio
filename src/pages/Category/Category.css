@@ -1,0 +1,8 @@
+.return-link{
+    color: var(--main-pop-color) !important;
+}
+
+.return-link:hover{
+    transition: filter 0.3s ease-in-out;
+    filter: brightness(60%);
+}

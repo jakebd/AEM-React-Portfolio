@@ -1,0 +1,16 @@
+:root {
+    --main-bg-color: #14111c;
+    --main-nav-color: #221d2f;
+    --main-nav-hov-color: #3a3154;
+    --main-acc-color: #6f42c1;
+
+    --main-postcard-color:#18151f;
+
+    --main-pop-color: #fad07e;
+    --main-null-color: rgba(83, 83, 83, 0.4);
+    --secondary-null-color: rgba(83, 83, 83, 0.8);
+
+    --primary-text-color: #fff;
+    --secondary-text-color: rgb(167, 167, 167);
+    --tertiary-text-color: #000000;
+}

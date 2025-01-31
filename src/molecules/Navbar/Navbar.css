@@ -1,0 +1,130 @@
+/* General styles */
+nav{
+  padding: 10px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand{
+  display: block;
+  font-size: 2rem;
+  color: var(--primary-text-color);
+  text-align: center;
+}
+
+nav .hamburger {
+  display: none;
+  font-size: 30px;
+  color: var(--primary-text-color);
+  cursor: pointer;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .hamburger:hover {
+  text-decoration: none;
+}
+
+nav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav .nav-links li {
+  position: relative;
+}
+
+nav .nav-links li a {
+  font-family: Hack, monospace;
+  color: var(--primary-text-color);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase
+}
+
+nav .nav-link {
+  padding: 10px;
+}
+
+nav .nav-link:hover {
+  background: var(--main-nav-hov-color);
+  border-radius: 5px;
+}
+
+/* Submenu styles */
+nav .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Below the parent item */
+  left: 0;
+  background: var(--main-nav-color);
+  list-style: none;
+  border-radius: 5px;
+  z-index: 1000;
+  padding-inline-start: 0px;
+}
+
+nav .sub-menu li{
+  margin: 5px;
+}
+
+nav .sub-menu li a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  padding: 8px 10px;
+  display: block;
+}
+
+nav .sub-menu li:hover {
+  background: var(--main-nav-hov-color);
+  border-radius: 5px;
+}
+
+nav .sub-menu.open {
+  display: block;
+}
+
+nav .dropdown-toggle {
+  font-family: Hack, monospace;
+  background: none;
+  color: var(--primary-text-color);
+  border: none;
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  nav .nav-links {
+    display: none; /* Hide links in mobile view */
+    flex-direction:column;
+    width: 100%;
+    text-align: left;
+  }
+
+  nav .nav-links.mobile {
+    display: flex; /* Show links when mobile menu is toggled */
+    align-items: flex-start; /* Align items to the left */
+    padding-left: 25px;
+  }
+
+  nav .hamburger {
+    display: flex; /* Show hamburger icon on mobile */
+  }
+
+  nav .sub-menu {
+    position: static; /* Ensure submenu stacks properly in mobile view */
+    margin-left: 20px;
+    width: 100%;
+  }
+}
