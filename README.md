@@ -48,7 +48,7 @@ This project assumes you have a local instance of AEM 6.5+ running, and have a b
 
 ### **1️⃣ Clone the Repository**  
 
-git clone https://github.com/your-username/your-repo.git
+git clone 
 cd your-repo
 
 ### **2️⃣ Install Dependencies
